@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>ESRI Assignment 1 - Ameet Rahane</title>
-        <script type="module" src="https://unpkg.com/@esri/calcite-components/dist/calcite/calcite.esm.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/@esri/calcite-components/dist/calcite/calcite.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    </head>
-    <body>
-        <calcite-shell dir="ltr" class="calcite-theme-light">
-            <header slot="header">
-                <h2 style = "margin: 1% 1% 1% 1%; font-size: 150%;">ESRI Assignment 1 - Ameet Rahane</h2>
-            </header>
-            <calcite-shell-panel slot="primary-panel" position="start" detached-height-scale="l" width-scale="m">
-                <calcite-action-bar class="calcite-theme-dark" slot="action-bar"></calcite-action-bar>
-                <calcite-card>
-                    <span slot="subtitle"><a href ="/public/item1.html"><div class="mypanel_item1" style = "margin: 10% 10% 10% 10%;"></div></a></span>
-                </calcite-card> 
-                <calcite-card>
-                    <span slot="subtitle"><a href ="/public/item2.html"><div class="mypanel_item2" style = "margin: 10% 10% 10% 10%;"></div></a></span>
-                </calcite-card> 
-                <calcite-card>
-                    <span slot="subtitle"><a href ="/public/item3.html"><div class="mypanel_item3" style = "margin: 10% 10% 10% 10%;"></div></a></span>
-                </calcite-card> 
-    
-            </calcite-shell-panel>
-           
-            <calcite-shell-center-row height-scale="s" position="end" slot="center-row">
-                <div style="width:50vw; background-image:var(--calcite-app-background-content); padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);"></div>
-            </calcite-shell-center-row>
-            <calcite-shell-panel slot="contextual-panel" position="end" detached-height-scale="l" width-scale="m">
-                <calcite-action-bar class="calcite-theme-light" slot="action-bar">
-                </calcite-action-bar>
-               
-            </calcite-shell-panel>
-        </calcite-shell>
-        <script>
-            $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services?f=pjson', function(data) { 
-                var serv = data.services.filter( s => s.type === "ImageServer").map( s => s.name);
-                
-                $(".mypanel_item1").append("<p>"+serv[0]+"</p>");
-                $(".mypanel_item2").append("<p>"+serv[1]+"</p>");
-                $(".mypanel_item3").append("<p>"+serv[2]+"</p>");
-
-            });
-            
-            $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer?f=pjson', function(data) {    
-                var text_name = `<b>NAME: </b> ${data.name} <br>`
-                var text_desciption = `<b>DESCRIPTION: </b> ${data.description}`
-                $(".mypanel_name").html(text_name);
-                $(".mypanel_desc").html(text_desciption);
-            });
-            
-            $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer/exportImage?bbox=1440000.0%2C535000.0%2C1455000.0%2C550000.0&bboxSR=&size=&imageSR=&time=&format=jpgpng&pixelType=F32&noData=&noDataInterpretation=esriNoDataMatchAny&interpolation=+RSP_BilinearInterpolation&compression=&compressionQuality=&bandIds=&mosaicRule=&renderingRule=&f=pjson',
-            function(data_img) {
-                var img = document.createElement('img');        
-                img.src = data_img.href;
-                $(".mypanel_img").html(img);
-            });
-        </script>
-    </body>
+  <head>
+    <title>ESRI Assignment 1 - Ameet Rahane</title>
+    <script type="module" src="https://unpkg.com/@esri/calcite-components/dist/calcite/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@esri/calcite-components/dist/calcite/calcite.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  </head>
+  <body>    
+    <calcite-shell dir="ltr" class="calcite-theme-light">
+      <header slot="header">
+        <h2 style = "margin: 1% 1% 1% 1%; font-size: 150%;">ESRI Assignment 1 - Ameet Rahane</h2>     
+      </header>
+      <calcite-shell-panel slot="primary-panel" position="start" detached-height-scale="l" width-scale="m">
+        <calcite-action-bar class="calcite-theme-dark" slot="action-bar"></calcite-action-bar>  
+          <calcite-pick-list></calcite-pick-list> 
+      </calcite-shell-panel>  
+      <calcite-shell-center-row height-scale="s" position="end" slot="center-row">               
+        <div style="width:50vw; background-image:var(--calcite-app-background-content); padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);"></div>
+      </calcite-shell-center-row>
+      <calcite-shell-panel slot="contextual-panel" position="end" detached-height-scale="l" width-scale="m">
+        <calcite-action-bar class="calcite-theme-light" slot="action-bar">
+          <calcite-popover-manager>
+            <calcite-action text="Idea" id="reference-element" label="Add Item" icon="lightbulb" appearance="solid" scale="m"></calcite-action>                    
+          </calcite-popover-manager>
+          <calcite-popover class="calcite-theme-light" reference-element="reference-element" placement="auto" offset-distance="6" offset-skidding="0" open="" text-close="Close">
+            <div style="padding: 55px 16px;">
+              <p>This application was built by Esri's <a href="mailto: arahane@esri.com" style="color:cornflowerblue;">@arahane</a> using 
+              <a href="https://esri.github.io/calcite-components/" style="color:cornflowerblue;">Calcite Components</a></p>      
+            </div>
+          </calcite-popover>       
+        </calcite-action-bar>
+        <calcite-panel style="padding: 1%;">
+          <div slot="header-content" class="NamePanel" style="padding: 1%;"></div>
+          <div class = "DescriptionPanel" style="padding: 1%;"></div> 
+        </calcite-panel>
+    </calcite-shell>
+    <script>
+      const InputURL="http://sampleserver6.arcgisonline.com/arcgis/rest/services";    
+      const URLForServices = InputURL + '?f=pjson';   
+      const ServiceName = "ImageServer";                    
+      $.getJSON(URLForServices, function(data) { 
+        const ServiceList = data.services.filter( s => s.type === ServiceName).map( s => s.name);
+        ServiceList.forEach( function(item, index) {
+        $("calcite-pick-list").append(
+          "<calcite-pick-list-item label='"+item+"'value='"+item+"label' onclick='ServiceDescription(\""+item+"\")'></calcite-pick-list-item>"               
+        )});
+      });
+      function ServiceDescription(ServiceListItem) {
+        const EndpointURL = InputURL+'/'+ServiceListItem+'/'+ServiceName+'?f=pjson'; 
+        $.getJSON(EndpointURL, function(data) {
+        const TextServiceName = `<b>NAME: </b> ${data.name} <br>`
+        const TextServiceDescription = `<b>DESCRIPTION: </b> ${data.description}`
+        $(".NamePanel").html(TextServiceName);
+        $(".DescriptionPanel").html(TextServiceDescription);
+      })};                
+    </script>
+  </body>
 </html>

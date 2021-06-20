@@ -1,0 +1,66 @@
+<calcite-pick-list-item label="T. Rex" description="Arm strength impaired" value="trex">
+                    <calcite-action slot="actions-end" icon="circle"></calcite-action>
+                  </calcite-pick-list-item>
+                  <calcite-pick-list-item label="Triceratops" description="3 horn" value="triceratops" selected>
+                    <calcite-action slot="actions-end" icon="circle"></calcite-action>
+                  </calcite-pick-list-item>
+                  <calcite-pick-list-item label="Velociraptor" description="Swift seizer" value="velociraptor">
+                    <calcite-action slot="actions-end" icon="circle"></calcite-action>
+                  </calcite-pick-list-item>
+
+
+
+
+                   //  $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services?f=pjson', function(data_f) { 
+          //      serv_folders = data_f.folders;
+          //      url_string_folders = 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/' +serv_folders[6]; 
+          //      $.getJSON(url_string_folders, function(data_ff) {
+          //          serv_inside = data_ff.services.filter( ss => ss.type === "ImageServer").map( ss => ss.name);
+                //for (var i = 0; i < serv_inside.length; i++) {
+                //$(".mypanel_item_folder").append("<p><a href='http://sampleserver6.arcgisonline.com/arcgis/rest/services/"+serv_inside[i]+"/ImageServer' style='text-decoration: none'>"+serv[i]+"</a></p>"); }
+                    //var text_name = `<b>NAME: </b> ${data.name} <br>`
+                    //var text_desciption = `<b>DESCRIPTION: </b> ${data.description}`
+                    //$(".mypanel_name").html(text_name);
+                    //$(".mypanel_desc").html(text_desciption);
+          //      });
+          //  });
+
+
+
+          $.getJSON((url_string_folders[6]), function(data_inside) {
+                const serv_inside = data_inside.services.filter(s => s.type === "ImageServer").map(s => s.name);
+              }); 
+                
+            $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer/exportImage?bbox=1440000.0%2C535000.0%2C1455000.0%2C550000.0&bboxSR=&size=&imageSR=&time=&format=jpgpng&pixelType=F32&noData=&noDataInterpretation=esriNoDataMatchAny&interpolation=+RSP_BilinearInterpolation&compression=&compressionQuality=&bandIds=&mosaicRule=&renderingRule=&f=pjson',
+               function(data_img) {
+                  const img = document.createElement('img');        
+                  img.src = data_img.href;
+                  $(".mypanel_img").html(img);
+                });
+
+              
+           /* $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services?f=pjson', function(data) { 
+              let url_string_folders = [];
+              const serv_folders = data.folders;
+                serv_folders.forEach( function(item, index) {
+                  $("calcite-pick-list").append(
+                    "<calcite-pick-list-item label='"+item+"'value='trex'></calcite-pick-list-item>"               
+                  );
+                  //url_string_folders[i] = 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/'+serv_folders[i]+'?f=pjson';   
+                })}); */
+
+                
+      let BoundingBoxValuesXmin = [];
+      let BoundingBoxValuesYmin = [];
+      let BoundingBoxValuesXmax = [];
+      let BoundingBoxValuesYmax = [];
+      
+      $.getJSON('http://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer?f=pjson', function(data){
+          BoundingBoxValuesXmin = data.fullExtent.xmin;
+          BoundingBoxValuesXmin = data.fullExtent.ymin;
+          BoundingBoxValuesXmin = data.fullExtent.xmax;
+          BoundingBoxValuesXmin = data.fullExtent.xmax;
+          const img = document.createElement('img');        
+                  img.src = 
+                  $(".mypanel_img").html(img);
+        });
