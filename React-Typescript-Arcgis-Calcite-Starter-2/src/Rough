@@ -1,0 +1,19 @@
+$.getJSON(URLForServices, function(data) { 
+    const ServiceList = data.services.filter( s => s.type === ServiceName).map( s => s.name);
+    ServiceList.forEach( function(item, index) {
+    $("calcite-pick-list").append(
+      "<calcite-pick-list-item label='"+item+"'value='"+item+"label' onclick='ServiceDescription(\""+item+"\")'></calcite-pick-list-item>"               
+    )});
+  });
+  function ServiceDescription(ServiceListItem) {
+    const EndpointURL = InputURL+'/'+ServiceListItem+'/'+ServiceName+'?f=pjson'; 
+    $.getJSON(EndpointURL, function(data) {
+    const TextServiceName = `<b>NAME: </b> ${data.name} <br>`
+    const TextServiceDescription = `<b>DESCRIPTION: </b> ${data.description}`
+    $(".NamePanel").html(TextServiceName);
+    $(".DescriptionPanel").html(TextServiceDescription);
+  })};
+
+
+
+  <div style="width:50vw; background-image:var(--calcite-app-background-content); padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);"></div>

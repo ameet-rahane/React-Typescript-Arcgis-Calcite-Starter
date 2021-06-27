@@ -1,0 +1,78 @@
+{
+  "id": "8c334bcb-8829-44cb-985f-ad1b8cae87f5",
+  "version": "2.0",
+  "name": "First Project",
+  "url": "https://www.google.com",
+  "tests": [{
+    "id": "0729c51c-64c3-452f-81f3-7539bd10ae44",
+    "name": "SearchTest",
+    "commands": [{
+      "id": "320d3a66-b26b-451a-8c27-1b920ce1f733",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.google.com",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "35f38668-04d2-4a01-aa8d-e2dcaeeb3efa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "39fdad65-5cdd-4823-96fb-a6d8aead8aa3",
+      "comment": "",
+      "command": "type",
+      "target": "name=q",
+      "targets": [
+        ["name=q", "name"],
+        ["css=.gLFyf", "css:finder"],
+        ["xpath=//input[@name='q']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "seleniumhq documentation"
+    }, {
+      "id": "c373184a-564d-45d0-a502-1ccfd9e8adb5",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=q",
+      "targets": [
+        ["name=q", "name"],
+        ["css=.gLFyf", "css:finder"],
+        ["xpath=//input[@name='q']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "080b691e-d9e0-4b2f-ad5c-78869539100e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.g:nth-child(1) > div:nth-child(2) .LC20lb",
+      "targets": [
+        ["css=.g:nth-child(1) > div:nth-child(2) .LC20lb", "css:finder"],
+        ["xpath=//div[@id='rso']/div/div/div/div/a/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'The Selenium Browser Automation Project :: Documentation ...')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6de4543-a23a-44ef-ba48-5904952a9455",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0,1500)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "381a8825-9535-4ad7-a0eb-a09cd4aaa3d3",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0729c51c-64c3-452f-81f3-7539bd10ae44"]
+  }],
+  "urls": ["https://www.google.com/"],
+  "plugins": []
+}
